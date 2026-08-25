@@ -1,7 +1,7 @@
 #!/bin/bash
 # ------------------------------------------------------------
 # monitoring-reseau.sh
-# Objet    : affiche un é�tat rapide du réseau de la machine
+# Objet    : affiche un état rapide du réseau de la machine
 # Auteur   : prenom.nom@exemple.fr
 # Usage    : ./monitoring-reseau.sh
 # Prérequis: iproute2 (ip, ss), testé sur Debian 12
