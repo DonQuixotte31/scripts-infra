@@ -42,6 +42,12 @@ if [ ! -d "$DOSSIER" ]; then
     exit 2
 fi
 
+if [ ! -w "$DOSSIER" ]; then
+    echo "Erreur : pas de droit d'écriture sur $DOSSIER" >&2
+    log "ERREUR : droits insuffisants sur $DOSSIER"
+    exit 3
+fi
+
 NB=$(find "$DOSSIER" -type f -name "*.log" -mtime +"$JOURS" | wc -l)
 
 if [ "$NB" -eq 0 ]; then
@@ -52,6 +58,7 @@ else
     find "$DOSSIER" -type f -name "*.log" -mtime +"$JOURS" -print
     find "$DOSSIER" -type f -name "*.log" -mtime +"$JOURS" -delete
     log "$NB fichier(s) de plus de $JOURS jours supprimé(s)"
+    exit 0
 fi
 
 log "=== Fin de la purge ==="
